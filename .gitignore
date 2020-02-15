@@ -1,0 +1,9 @@
+node_modules
+.env
+*.0x
+logs
+isolate-*
+processed.*
+note*
+.prettierrc
+.vscode

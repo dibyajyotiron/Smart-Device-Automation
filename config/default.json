@@ -1,0 +1,5 @@
+{
+    "admin": ["abc", "abc@email.com"],
+    "bot": ["abe", "abe@email.com"],
+    "secretOrKey": "secret"
+}
