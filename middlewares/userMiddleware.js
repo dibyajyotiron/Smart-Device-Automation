@@ -42,17 +42,4 @@ module.exports = {
             return res.status(400).json({ error: true, message: "Invalid token provided." });
         }
     },
-
-    isAllowed(role) {
-        return (req, res, next) => {
-            const decodedToken = decodeToken(req.header("x-auth-token"));
-            req.user = decodedToken;
-            const requiredRole = config.get(role);
-            if (requiredRole.includes(req.user.email || req.user.username)) next();
-            return res.status(403).json({
-                error: true,
-                message: "Only admins are allowed to perform this action!",
-            });
-        };
-    },
 };
