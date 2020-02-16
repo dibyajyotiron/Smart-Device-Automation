@@ -6,7 +6,6 @@ const { validateHomeSchema } = require("../models/joiSchema");
 const { createOrUpdateHome, getHomeDetails } = require("../controllers/homeController");
 
 router.use(auth);
-// router.get("/", getRoomsGroupedByHome);
 router.post("/create", validateReqBody(validateHomeSchema), createOrUpdateHome);
 router.put("/update/:id", validateReqBody(validateHomeSchema), validateHome, createOrUpdateHome);
 
