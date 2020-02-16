@@ -43,4 +43,25 @@ module.exports = {
         const smartDevices = await getDevicesForRoom(roomId, userId);
         return res.json({ success: true, message: smartDevices });
     },
+    async updateDeviceStatus(req, res) {
+        const smartDevice = res.locals.smartDevice;
+        smartDevice.state = smartDevice.state === "on" ? "off" : "on";
+        await smartDevice.save();
+        return res.json({ success: true, message: `${smartDevice.name} was switched ${smartDevice.state}` });
+    },
+    async updateDeviceDetails(req, res) {
+        const { name, ip, room: _room } = req.body;
+        const device = res.locals.smartDevice;
+        device.name = name || device.name;
+        device._room = _room || device._room;
+        device.ip = ip || device.ip;
+        await device.save();
+        return res.json({ success: true, message: `${device.name} updated!` });
+    },
+    async deleteDevice(req, res) {
+        const device = res.locals.smartDevice;
+        device.active = false;
+        await device.save();
+        return res.json({ success: true, message: `${device.name} removed!` });
+    },
 };
