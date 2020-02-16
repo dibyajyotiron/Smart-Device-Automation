@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const verifyID = objectID => {
     const { ObjectId } = mongoose.Types;
-    if (!ObjectId.isValid(objectID)) return "The resource you're looking for is not here anymore!";
+    if (!ObjectId.isValid(objectID)) return "The resource with given id doesn't exist!";
     return true;
 };
 
-global.verifyID = verifyID;
+module.exports.verifyID = verifyID;
