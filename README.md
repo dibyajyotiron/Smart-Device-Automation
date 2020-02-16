@@ -15,3 +15,4 @@ The Idea behind the system design
 -   `npm i`
 -   `npm i nodemon -g`
 -   `npm run dev` || `npm run prod`
+-   Use the provided collection along with environment to restore and open in postman, register a user first and the update the token and ids of resources in urls
